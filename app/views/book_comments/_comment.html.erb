@@ -1,0 +1,10 @@
+<% book.book_comments.each do |book_comment| %>
+	<div class="comment-link" id="comment-link-<%= book.id %>">
+		<li style="list-style:none;">
+			<%= book_comment.comment %>
+			<% if book_comment.user_id == current_user.id %>
+				<%= link_to "Destroy", book_book_comments_path(book, comment_id: book_comment.id), method: :delete, remote: true, class: "btn-sm btn-danger destroy_book_comment_#{book_comment.id}" %>
+			<% end %>
+		</li>
+	</div>
+<% end %>

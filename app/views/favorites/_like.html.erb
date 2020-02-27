@@ -1,0 +1,12 @@
+<div class="like-link" id="like-link-<%= book.id %>">
+	<% if book.favorited_by?(current_user) %>
+		<%= link_to book_favorites_path(book), method: :delete, remote: true do %>
+	      <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+	    <% end %>
+	<% else %>
+	    <%= link_to book_favorites_path(book), method: :post, remote: true do %>
+	      <i class="fa fa-heart-o" aria-hidden="true"></i>
+	    <% end %>
+	<% end %>
+	<%= book.favorites.count %>
+</div>
